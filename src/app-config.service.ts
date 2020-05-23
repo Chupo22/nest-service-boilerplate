@@ -2,7 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 
-export const validationSchema = Joi.object({
+type TEnv = {
+  NODE_ENV: string;
+  HOST: string;
+  PORT: number;
+};
+
+export const validationSchema = Joi.object<TEnv>({
   NODE_ENV: Joi.string()
     .valid('development', 'production', 'test')
     .default('development'),

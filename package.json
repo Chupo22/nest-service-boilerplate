@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "type-coverage": "type-coverage --strict --ignore-catch --at-least 100 --ignore-files \"dist/**/*\""
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -41,18 +42,38 @@
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.5",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1",
+    "lint-staged": "^10.2.6",
+    "prettier": "^2.0.5",
     "source-map-support": "^0.5.19",
     "supertest": "^4.0.2",
     "ts-jest": "25.2.1",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
+    "type-coverage": "^2.6.1",
     "typescript": "^3.9.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run type-coverage && npm run build"
+    }
+  },
+  "lint-staged": {
+    "*.(ts)": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.(json|js)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [

@@ -11,6 +11,7 @@ async function bootstrap() {
   const { host, port } = configService;
 
   if (configService.isDevelopment) {
+    // type-coverage:ignore-next-line
     require('source-map-support').install();
   }
 

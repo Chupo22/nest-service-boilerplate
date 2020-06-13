@@ -15,7 +15,9 @@
     "strict": true,
     "paths": {
       "@app/*": ["src/*"],
-      "@hapi/joi": ["hapi__joi"]
+      "@libs": ["src/libs/index"],
+      "@modules": ["src/modules/index"],
+      "@services": ["src/services/index"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -1,19 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@app/app.module';
-import { AppConfigService } from '@app/app-config.service';
 import { Logger } from '@nestjs/common';
+import { ConfigService } from '@modules';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const configService = app.get(AppConfigService);
+  const configService = app.get(ConfigService);
   const logger = app.get(Logger);
   const { host, port } = configService;
-
-  if (configService.isDevelopment) {
-    // type-coverage:ignore-next-line
-    require('source-map-support').install();
-  }
 
   await app.listen(port, host);
 

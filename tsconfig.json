@@ -14,8 +14,9 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "@config": ["src/config"],
-      "@services": ["src/services/index"]
+      "@modules": ["src/modules/index"],
+      "@services": ["src/services/index"],
+      "@interceptors": ["src/interceptors/index"]
     }
   },
   "exclude": ["node_modules", "dist"]

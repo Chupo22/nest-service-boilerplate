@@ -13,9 +13,6 @@ RUN npm prune --production
 
 FROM node:12.16.1-alpine
 
-ARG HOST
-ARG PORT
-
 COPY --from=builder /dist /dist
 COPY --from=builder /node_modules /node_modules
 

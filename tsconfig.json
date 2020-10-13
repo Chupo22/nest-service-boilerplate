@@ -15,7 +15,6 @@
     "strict": true,
     "paths": {
       "@config": ["src/config"],
-      "@libs": ["src/libs/index"],
       "@services": ["src/services/index"]
     }
   },

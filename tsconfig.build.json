@@ -2,9 +2,6 @@
   "extends": "./tsconfig.json",
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"],
   "paths": {
-    "@app/*": ["src/*"],
-    "@libs": ["src/libs/index"],
-    "@modules": ["src/modules/index"],
     "@services": ["src/services/index"]
   }
 }
